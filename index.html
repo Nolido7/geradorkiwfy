@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Gerador de Notificações</title>
+  </head>
+  <body>
+    <button onclick="mostrarNotificacao()">Mostrar Notificação</button>
+
+    <script>
+      function mostrarNotificacao() {
+  if ("Notification" in window) {
+    // Verifique se as notificações são suportadas pelo navegador
+    Notification.requestPermission().then(function (permission) {
+      if (permission === "granted") {
+        // Se a permissão for concedida, crie a notificação
+        var options = {
+          body: "Valor: R$29,29",
+          icon: "logo.png", // URL da imagem do ícone
+        };
+
+        var notificacao = new Notification("Venda aprovada!", options);
+
+        notificacao.onclick = function () {
+          // Lidar com o clique na notificação, se necessário
+          window.location.href = "https://exemplo.com"; // Redirecionar para um URL
+        };
+      }
+    });
+  }
+}
+    </script>
+  </body>
+</html>
